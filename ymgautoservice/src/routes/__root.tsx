@@ -9,7 +9,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../style.css";
+import "../style.css";
 
 function NotFoundComponent() {
   return (
@@ -95,12 +95,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6c9203ab-bac8-4c94-a548-f634b34255d1/id-preview-01714a7e--52a27669-52ee-47cd-a7b0-b711b67a9265.lovable.app-1779355800450.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6c9203ab-bac8-4c94-a548-f634b34255d1/id-preview-01714a7e--52a27669-52ee-47cd-a7b0-b711b67a9265.lovable.app-1779355800450.png" },
     ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
+    // links: [
+    //   {
+    //     rel: "stylesheet",
+    //     href: appCss,
+    //   },
+    // ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
