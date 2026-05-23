@@ -1,14 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import heroImg from "../assets/hero-auto.png";
+import heroImg from "./assets/hero-auto.png";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-const PHONE = "+917569866156";
-const WHATSAPP = "917569866156";
-const BUSINESS_NAME = "Sri Venkateshwara Auto Travels";
+const PHONE = "+919876543210";
+const WHATSAPP = "919876543210";
+const BUSINESS_NAME = "Sri Balaji Auto Travels";
 
 const telHref = `tel:${PHONE}`;
 const waHref = (msg: string) =>
@@ -35,7 +30,9 @@ const whyUs = [
 ];
 
 const areas = [
-  "Kurnool", "Adoni", "Mantralayam", "Urukunda", "Kodumur", "Panchamukhi", "Kasapuram", "Nandavarma", "Banavasi"
+  "Madurai", "Dindigul", "Trichy", "Karur", "Theni",
+  "Sivaganga", "Virudhunagar", "Ramnad", "Pudukkottai",
+  "Palani", "Kodaikanal", "Oddanchatram", "Usilampatti", "Melur",
 ];
 
 const testimonials = [
@@ -56,7 +53,7 @@ const testimonials = [
   },
 ];
 
-function Index() {
+export default function App() {
   const [form, setForm] = useState({ name: "", phone: "", pickup: "", drop: "", date: "", notes: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -69,23 +66,18 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground scroll-smooth">
-      {/* Top bar */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <a href="#home" className="flex items-center gap-2">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-xl">🛺</span>
             <span className="text-base font-bold leading-tight sm:text-lg">{BUSINESS_NAME}</span>
           </a>
-          <a
-            href={telHref}
-            className="hidden rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex"
-          >
+          <a href={telHref} className="hidden rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex">
             📞 Call Now
           </a>
         </div>
       </header>
 
-      {/* Hero */}
       <section id="home" className="relative overflow-hidden bg-gradient-to-b from-primary/30 via-primary/10 to-background">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-2 md:items-center md:py-16">
           <div className="text-center md:text-left">
@@ -99,18 +91,10 @@ function Index() {
               Safe and budget-friendly rides within <strong className="text-foreground">150 KM</strong>. Call us or book on WhatsApp in seconds.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
-              <a
-                href={telHref}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 text-base font-bold text-primary shadow-lg active:scale-95"
-              >
+              <a href={telHref} className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 text-base font-bold text-primary shadow-lg active:scale-95">
                 📞 Call Now
               </a>
-              <a
-                href={waHref(prefilled)}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-4 text-base font-bold text-whatsapp-foreground shadow-lg active:scale-95"
-              >
+              <a href={waHref(prefilled)} target="_blank" rel="noopener" className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-4 text-base font-bold text-whatsapp-foreground shadow-lg active:scale-95">
                 💬 WhatsApp Booking
               </a>
             </div>
@@ -122,13 +106,7 @@ function Index() {
           </div>
           <div className="relative">
             <div className="overflow-hidden rounded-3xl border-4 border-foreground/90 shadow-2xl">
-              <img
-                src={heroImg}
-                alt="Friendly auto-rickshaw driver ready to serve"
-                width={1280}
-                height={960}
-                className="h-auto w-full object-cover"
-              />
+              <img src={heroImg} alt="Friendly auto-rickshaw driver ready to serve" width={1280} height={960} className="h-auto w-full object-cover" />
             </div>
             <div className="absolute -bottom-4 left-4 rounded-2xl border border-border bg-card px-4 py-3 shadow-lg">
               <p className="text-xs text-muted-foreground">Starting from</p>
@@ -138,7 +116,6 @@ function Index() {
         </div>
       </section>
 
-      {/* About */}
       <section id="about" className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
@@ -146,21 +123,12 @@ function Index() {
             <p className="mt-3 text-muted-foreground">
               {BUSINESS_NAME} is a trusted local auto-rickshaw travel service helping families,
               elderly travelers, students and patients reach their destination safely and affordably.
-              Whether you need a quick local ride or an outstation trip within 150 KM, we are just a
-              call away.
+              Whether you need a quick local ride or an outstation trip within 150 KM, we are just a call away.
             </p>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-              {[
-                "Experienced & licensed driver",
-                "Safe and careful driving",
-                "Affordable pricing always",
-                "Friendly, polite service",
-                "Reliable and on time",
-                "Clean auto-rickshaw",
-              ].map((t) => (
+              {["Experienced & licensed driver","Safe and careful driving","Affordable pricing always","Friendly, polite service","Reliable and on time","Clean auto-rickshaw"].map((t) => (
                 <li key={t} className="flex items-start gap-2 rounded-xl bg-secondary px-3 py-2 text-sm">
-                  <span className="text-base">✅</span>
-                  <span>{t}</span>
+                  <span className="text-base">✅</span><span>{t}</span>
                 </li>
               ))}
             </ul>
@@ -178,25 +146,16 @@ function Index() {
         </div>
       </section>
 
-      {/* Services */}
       <section id="services" className="bg-secondary/60 py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-4">
           <SectionHead title="Our Services" sub="Wherever you want to go within 150 KM, we are ready." />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
-              <div
-                key={s.title}
-                className="rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              >
+              <div key={s.title} className="rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary text-2xl">{s.icon}</div>
                 <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
-                <a
-                  href={waHref(`Hello, I need ${s.title}. Please share details.`)}
-                  target="_blank"
-                  rel="noopener"
-                  className="mt-4 inline-flex text-sm font-semibold text-foreground underline-offset-4 hover:underline"
-                >
+                <a href={waHref(`Hello, I need ${s.title}. Please share details.`)} target="_blank" rel="noopener" className="mt-4 inline-flex text-sm font-semibold text-foreground underline-offset-4 hover:underline">
                   Book on WhatsApp →
                 </a>
               </div>
@@ -205,7 +164,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
       <section id="why" className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <SectionHead title="Why Choose Us" sub="Real reasons families and travelers trust us every day." />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -219,18 +177,12 @@ function Index() {
         </div>
       </section>
 
-      {/* Coverage */}
       <section id="coverage" className="bg-primary/15 py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-4">
           <SectionHead title="Coverage Areas" sub="We travel up to 150 KM, including these nearby towns and cities." />
           <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-3">
             {areas.map((a) => (
-              <span
-                key={a}
-                className="rounded-full border border-foreground/20 bg-card px-4 py-2 text-sm font-medium shadow-sm"
-              >
-                📍 {a}
-              </span>
+              <span key={a} className="rounded-full border border-foreground/20 bg-card px-4 py-2 text-sm font-medium shadow-sm">📍 {a}</span>
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-muted-foreground">
@@ -239,7 +191,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section id="reviews" className="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <SectionHead title="What Customers Say" sub="Honest reviews from people in our community." />
         <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -256,14 +207,12 @@ function Index() {
         </div>
       </section>
 
-      {/* Contact */}
       <section id="contact" className="bg-foreground text-background py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
             <h2 className="text-2xl font-bold sm:text-3xl text-primary">Book Your Ride</h2>
             <p className="mt-2 text-sm text-background/80">Fill the form and we'll send the details on WhatsApp.</p>
           </div>
-
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
             <form onSubmit={handleSubmit} className="space-y-3 rounded-2xl bg-background p-5 text-foreground shadow-xl sm:p-6">
               <Field label="Your Name" required value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
@@ -273,32 +222,21 @@ function Index() {
               <Field label="Date & Time" value={form.date} onChange={(v) => setForm({ ...form, date: v })} placeholder="e.g. Tomorrow 9 AM" />
               <div>
                 <label className="mb-1 block text-sm font-semibold">Notes</label>
-                <textarea
-                  value={form.notes}
-                  onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                  rows={3}
-                  className="w-full rounded-xl border border-input bg-card px-4 py-3 text-base focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
-                />
+                <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} rows={3} className="w-full rounded-xl border border-input bg-card px-4 py-3 text-base focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40" />
               </div>
-              <button
-                type="submit"
-                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-4 text-base font-bold text-whatsapp-foreground shadow-lg active:scale-95"
-              >
+              <button type="submit" className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-4 text-base font-bold text-whatsapp-foreground shadow-lg active:scale-95">
                 💬 Send Booking on WhatsApp
               </button>
             </form>
-
             <div className="space-y-5">
               <div className="rounded-2xl bg-background/10 p-5 ring-1 ring-background/20">
                 <h3 className="text-lg font-bold text-primary">Contact Directly</h3>
                 <div className="mt-4 space-y-3">
                   <a href={telHref} className="flex items-center justify-between rounded-xl bg-primary px-4 py-3 text-foreground">
-                    <span className="font-semibold">📞 {PHONE}</span>
-                    <span className="text-sm font-bold">Call</span>
+                    <span className="font-semibold">📞 {PHONE}</span><span className="text-sm font-bold">Call</span>
                   </a>
                   <a href={waHref(prefilled)} target="_blank" rel="noopener" className="flex items-center justify-between rounded-xl bg-whatsapp px-4 py-3 text-whatsapp-foreground">
-                    <span className="font-semibold">💬 WhatsApp Chat</span>
-                    <span className="text-sm font-bold">Open</span>
+                    <span className="font-semibold">💬 WhatsApp Chat</span><span className="text-sm font-bold">Open</span>
                   </a>
                 </div>
                 <p className="mt-4 text-sm text-background/80">
@@ -307,22 +245,13 @@ function Index() {
                 </p>
               </div>
               <div className="overflow-hidden rounded-2xl ring-1 ring-background/20">
-                <iframe
-                  title="Our location"
-                  src="https://www.google.com/maps?q=Madurai,Tamil+Nadu&output=embed"
-                  width="100%"
-                  height="260"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="block w-full"
-                />
+                <iframe title="Our location" src="https://www.google.com/maps?q=Madurai,Tamil+Nadu&output=embed" width="100%" height="260" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="block w-full" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-background py-10">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 sm:grid-cols-3">
           <div>
@@ -330,9 +259,7 @@ function Index() {
               <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-xl">🛺</span>
               <span className="font-bold">{BUSINESS_NAME}</span>
             </div>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Safe, affordable and friendly auto-rickshaw rides within 150 KM.
-            </p>
+            <p className="mt-3 text-sm text-muted-foreground">Safe, affordable and friendly auto-rickshaw rides within 150 KM.</p>
           </div>
           <div>
             <p className="text-sm font-bold">Quick Links</p>
@@ -357,22 +284,9 @@ function Index() {
         </p>
       </footer>
 
-      {/* Floating mobile buttons */}
       <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center gap-3 px-4 md:hidden">
-        <a
-          href={telHref}
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3.5 text-base font-bold text-primary shadow-xl active:scale-95"
-        >
-          📞 Call
-        </a>
-        <a
-          href={waHref(prefilled)}
-          target="_blank"
-          rel="noopener"
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-whatsapp px-5 py-3.5 text-base font-bold text-whatsapp-foreground shadow-xl active:scale-95"
-        >
-          💬 WhatsApp
-        </a>
+        <a href={telHref} className="flex flex-1 items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3.5 text-base font-bold text-primary shadow-xl active:scale-95">📞 Call</a>
+        <a href={waHref(prefilled)} target="_blank" rel="noopener" className="flex flex-1 items-center justify-center gap-2 rounded-full bg-whatsapp px-5 py-3.5 text-base font-bold text-whatsapp-foreground shadow-xl active:scale-95">💬 WhatsApp</a>
       </div>
       <div className="h-20 md:hidden" />
     </div>
@@ -398,9 +312,7 @@ function Stat({ n, l }: { n: string; l: string }) {
   );
 }
 
-function Field({
-  label, value, onChange, required, type = "text", placeholder,
-}: {
+function Field({ label, value, onChange, required, type = "text", placeholder }: {
   label: string; value: string; onChange: (v: string) => void;
   required?: boolean; type?: string; placeholder?: string;
 }) {
@@ -409,14 +321,7 @@ function Field({
       <label className="mb-1 block text-sm font-semibold">
         {label} {required && <span className="text-destructive">*</span>}
       </label>
-      <input
-        type={type}
-        required={required}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-input bg-card px-4 py-3 text-base focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
-      />
+      <input type={type} required={required} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} className="w-full rounded-xl border border-input bg-card px-4 py-3 text-base focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40" />
     </div>
   );
 }
